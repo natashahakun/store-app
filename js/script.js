@@ -91,3 +91,7 @@ var pen = new Product("pen", "1.00", "plastic", "0.10");
 //create new instances of Store prototype
 var target = new Store("Target", "Richmond");
 var nordstrom = new Store("Nordstrom", "Richmond");
+
+//create new instances of Customer prototype
+var natasha = new Customer("Natasha", "30.00");
+var flip = new Customer("Flip", "15.00");
