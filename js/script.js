@@ -29,4 +29,11 @@ var Store = function(name, location) {
   this.addProduct = function(product){
     this.products.push(product);
   }
+
+  //iterate through products to create inventory
+  this.inventory = function(){
+    for (i = 0; i < this.products.length; i++) {
+      console.log(this.products[i].name);
+    }
+  }
 }
