@@ -36,4 +36,10 @@ var Store = function(name, location) {
       console.log(this.products[i].name);
     }
   }
+
+  this.purchase = function(product) {
+    this.cashRegister += product.price;
+    var index = this.products.indexOf(product);
+    this.products.splice(index, 1);
+  }
 }
