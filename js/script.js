@@ -62,4 +62,11 @@ var Customer = function(name, cashMoney) {
     this.shoppingBag.push(product);
     return "I have added a " + product.name + " to my shopping bag."
   }
+
+  this.itemsInShoppingBag = function(){
+    var shoppingBagLength = this.shoppingBag.length;
+    for (i = 0; i < shoppingBagLength; i++){
+      console.log(this.shoppingBag[i].name);
+    }
+  }
 }
