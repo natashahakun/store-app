@@ -1,3 +1,22 @@
+
+$(document).ready(function(){
+
+  $("#customers").find("button").click(function(){
+    console.log("Here");
+  })
+
+  $("button.add-customer").click(function(){
+    console.log("here");
+    var newCustomerName = prompt("Please enter your name");
+    var newCustomerWallet = prompt("Please enter the amount in your wallet");
+    console.log(newCustomerName + " " + newCustomerWallet);
+    $("#customers > tbody:last-child").append("<tr><td>newCustomerName</td><td>newCustomerWallet</td><td><button class='btn btn-default select'>Select</button></td></tr>");
+  })
+
+  $("#stores").find("button").click(function(){
+    console.log("Here");
+  })
+
 //find product amount of one product and then create function that calls that function on all the products  indexOf  if store is out of product or customer out of money, don't allow purchase
 
 //use object constructor to create Product prototype
@@ -95,3 +114,5 @@ var nordstrom = new Store("Nordstrom", "Richmond");
 //create new instances of Customer prototype
 var natasha = new Customer("Natasha", "30.00");
 var flip = new Customer("Flip", "15.00");
+
+})
