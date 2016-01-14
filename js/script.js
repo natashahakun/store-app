@@ -69,4 +69,9 @@ var Customer = function(name, cashMoney) {
       console.log(this.shoppingBag[i].name);
     }
   }
+
+  this.purchase = function(product){
+    this.cashMoney -= Product.price;
+    return "I have $" + this.cashMoney + " remaining in my wallet."
+  }
 }
