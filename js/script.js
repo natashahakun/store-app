@@ -23,4 +23,10 @@ var Store = function(name, location) {
   this.sayStore = function(){
     return "You are currently shopping in " + this.name + " in " + this.location;
   }
+
+  //add each product to products[]
+
+  this.addProduct = function(product){
+    this.products.push(product);
+  }
 }
