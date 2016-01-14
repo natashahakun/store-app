@@ -1,10 +1,6 @@
 
 $(document).ready(function(){
 
-  $("#customers").find("button").click(function(){
-    console.log("Here");
-  })
-
   $("button.add-customer").click(function(){
     console.log("here");
     var newCustomerName = prompt("Please enter your name");
@@ -13,9 +9,15 @@ $(document).ready(function(){
     $("#customers > tbody:last-child").append("<tr><td>newCustomerName</td><td>newCustomerWallet</td><td><button class='btn btn-default select'>Select</button></td></tr>");
   })
 
+  // $("#customers").find(".select").click(function(){
+  //   // var signIn = prompt("Would you like to sign in?");
+  // })
+
+
   $("#stores").find("button").click(function(){
     console.log("Here");
   })
+
 
 //find product amount of one product and then create function that calls that function on all the products  indexOf  if store is out of product or customer out of money, don't allow purchase
 
