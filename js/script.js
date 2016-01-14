@@ -12,6 +12,7 @@ var Product = function(name, price, material, weight) {
   }
 }
 
+
 //use object constructor to create store prototype
 var Store = function(name, location) {
 
@@ -42,4 +43,13 @@ var Store = function(name, location) {
     var index = this.products.indexOf(product);
     this.products.splice(index, 1);
   }
+}
+
+
+//use object constructor to create customer prototype
+var Customer = function(name, cashMoney) {
+
+  this.name = name;
+  this.cashMoney = cashMoney;
+  this.shoppingBag = [];
 }
