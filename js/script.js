@@ -75,3 +75,9 @@ var Customer = function(name, cashMoney) {
     return "I have $" + this.cashMoney + " remaining in my wallet."
   }
 }
+
+
+var Transaction = function(store, customer, product){
+  store.purchase(product);
+  customer.purchase(product);
+}
