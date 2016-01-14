@@ -55,4 +55,11 @@ var Customer = function(name, cashMoney) {
 
   this.introduction = function(){
     return "Hi my name is " + this.name + " and I have $" + this.cashMoney + " in my wallet.";
+  }
+
+  //add product to customer's shopping bag
+  this.addToShoppingBag = function(product){
+    this.shoppingBag.push(product);
+    return "I have added a " + product.name + " to my shopping bag."
+  }
 }
