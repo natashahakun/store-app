@@ -87,3 +87,7 @@ var Transaction = function(store, customer, product){
 var mug = new Product("mug", "3.00", "ceramic", "0.25");
 var book = new Product("book", "7.99", "paper", "1.00");
 var pen = new Product("pen", "1.00", "plastic", "0.10");
+
+//create new instances of Store prototype
+var target = new Store("Target", "Richmond");
+var nordstrom = new Store("Nordstrom", "Richmond");
