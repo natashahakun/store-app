@@ -20,4 +20,7 @@ var Store = function(name, location) {
   this.products = [];
   this.cashRegister = 100;
 
+  this.sayStore = function(){
+    return "You are currently shopping in " + this.name + " in " + this.location;
+  }
 }
