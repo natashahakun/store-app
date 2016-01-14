@@ -11,3 +11,13 @@ var Product = function(name, price, material, weight) {
     return "This product weighs " + Product.weight + " pounds.";
   }
 }
+
+//use object constructor to create store prototype
+var Store = function(name, location) {
+
+  this.name = name;
+  this.location = location;
+  this.products = [];
+  this.cashRegister = 100;
+
+}
