@@ -7,7 +7,7 @@ $(document).ready(function(){
     var newCustomerName = prompt("Please enter your name");
     var newCustomerWallet = prompt("Please enter the amount in your wallet");
     console.log(newCustomerName + " " + newCustomerWallet);
-    $("#customers > tbody:last-child").append("<tr><td>newCustomerName</td><td>newCustomerWallet</td><td><button class='btn btn-default select'>Select</button></td></tr>");
+    $("#customers > tbody:last-child").append("<tr><td>" + newCustomerName + "</td><td>" + newCustomerWallet + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
   })
 
 //user selects customer
