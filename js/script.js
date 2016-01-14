@@ -52,4 +52,7 @@ var Customer = function(name, cashMoney) {
   this.name = name;
   this.cashMoney = cashMoney;
   this.shoppingBag = [];
+
+  this.introduction = function(){
+    return "Hi my name is " + this.name + " and I have $" + this.cashMoney + " in my wallet.";
 }
