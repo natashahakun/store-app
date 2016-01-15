@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  //create new instances of Customer prototype
+  var natasha = new Customer("Natasha", "30.00");
+  var flip = new Customer("Flip", "15.00");
+
   //create new instances of Product prototype
   var mug = new Product("mug", "3.00", "ceramic", "0.25");
   var book = new Product("book", "7.99", "paper", "1.00");
@@ -9,11 +13,8 @@ $(document).ready(function() {
   var target = new Store("Target", "Richmond");
   var nordstrom = new Store("Nordstrom", "Richmond");
 
-  //create new instances of Customer prototype
-  var natasha = new Customer("Natasha", "30.00");
-  var flip = new Customer("Flip", "15.00");
 
-  //user adds new customer --> need to attach new customer with new Customer prototype
+  //user adds new customer
   $(".customers-container").on("click", ".add-customer", function() {
     var newCustomerName = prompt("Please enter your name");
     var newCustomerWallet = prompt("Please enter the amount in your wallet");
@@ -21,6 +22,7 @@ $(document).ready(function() {
     addCustomer(newCustomer);
   });
 
+//populate customers table
   function addCustomer(customer) {
     $("#customers > tbody:last-child").append("<tr><td>" + customer.name + "</td><td>" + customer.cashMoney + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
   }
@@ -28,7 +30,6 @@ $(document).ready(function() {
   //user selects customer
   $("#customers").on("click", ".select", function() {
     console.log("customer select");
-    // var signIn = prompt("Would you like to sign in?");
   });
 
   //user selects store
@@ -40,6 +41,38 @@ $(document).ready(function() {
   $("#products").on("click", "button", function() {
     console.log("product select");
   });
+
+
+  //use object constructor to create customer prototype
+  function Customer(name, cashMoney) {
+
+    this.name = name;
+    this.cashMoney = cashMoney;
+    this.shoppingBag = [];
+
+    this.introduction = function() {
+      return "Hi my name is " + this.name + " and I have $" + this.cashMoney + " in my wallet.";
+    };
+
+    //add product to customer's shopping bag
+    this.addToShoppingBag = function(product) {
+      this.shoppingBag.push(product);
+      return "I have added a " + product.name + " to my shopping bag.";
+    };
+
+    this.itemsInShoppingBag = function() {
+      var shoppingBagLength = this.shoppingBag.length;
+      for (i = 0; i < shoppingBagLength; i++) {
+        console.log(this.shoppingBag[i].name);
+      }
+    };
+
+    this.purchase = function(product) {
+      this.cashMoney -= Product.price;
+      return "I have $" + this.cashMoney + " remaining in my wallet.";
+    };
+  }
+
 
   //find product amount of one product and then create function that calls that function on all the products  indexOf  if store is out of product or customer out of money, don't allow purchase
 
@@ -85,37 +118,6 @@ $(document).ready(function() {
       this.cashRegister += product.price;
       var index = this.products.indexOf(product);
       this.products.splice(index, 1);
-    };
-  }
-
-
-  //use object constructor to create customer prototype
-  function Customer(name, cashMoney) {
-
-    this.name = name;
-    this.cashMoney = cashMoney;
-    this.shoppingBag = [];
-
-    this.introduction = function() {
-      return "Hi my name is " + this.name + " and I have $" + this.cashMoney + " in my wallet.";
-    };
-
-    //add product to customer's shopping bag
-    this.addToShoppingBag = function(product) {
-      this.shoppingBag.push(product);
-      return "I have added a " + product.name + " to my shopping bag.";
-    };
-
-    this.itemsInShoppingBag = function() {
-      var shoppingBagLength = this.shoppingBag.length;
-      for (i = 0; i < shoppingBagLength; i++) {
-        console.log(this.shoppingBag[i].name);
-      }
-    };
-
-    this.purchase = function(product) {
-      this.cashMoney -= Product.price;
-      return "I have $" + this.cashMoney + " remaining in my wallet.";
     };
   }
 
