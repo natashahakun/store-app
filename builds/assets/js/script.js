@@ -114,7 +114,7 @@ $(document).ready(function() {
         {
           text: "No",
           click: function () {
-            select = {};
+            selectStore = {};
             div.dialog("close");
           }
         }
