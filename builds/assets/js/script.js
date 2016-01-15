@@ -34,6 +34,10 @@ $(document).ready(function() {
     console.log("customer select");
   });
 
+  function addStore(store) {
+    $("#stores > tbody:last-child").append("<tr><td>" + store.name + "</td><td>" + store.location + "</td><td><button class='btn btn-default'>Select</button></td></tr>");
+  }
+
   //user selects store
   $("#stores").on("click", "button", function() {
     console.log("store select");
