@@ -124,8 +124,12 @@ $(document).ready(function() {
     });
   }
 
+//welcome customer
+function welcomeCustomer() {
+  $("nav p:first").html("Hi " + select.name + "!");
+}
 
-//show products container when a customer and store have been selected
+//show products container when a customer and store have been selected and hides customers and stores
   function showProducts() {
     if (jQuery.isEmptyObject(select) === false && jQuery.isEmptyObject(selectStore) === false) {
       $(".customers-store-container").css("display", "none");
