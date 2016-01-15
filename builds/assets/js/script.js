@@ -63,7 +63,7 @@ $(document).ready(function() {
         {
         text: "Yes",
         click: function () {
-          $(".select").css("display", "none");
+          $(".customers-container button").css("display", "none");
           div.dialog("close");
         }
         },
