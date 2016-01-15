@@ -54,30 +54,33 @@ $(document).ready(function() {
     confirm();
   });
 
-
+//confirm selected customer
   function confirm(){
-    var msg = "Are you " + select.name;
+    var msg = "Are you " + select.name + "?";
     var div = $("<div>" + msg + "</div>");
     div.dialog({
       buttons: [
         {
-        text: "Yes",
-        click: function () {
-          $(".customers-container button").css("display", "none");
-          div.dialog("close");
-        }
+          text: "Yes",
+          click: function () {
+            $(".customers-container button").css("display", "none");
+            console.log(select);
+            div.dialog("close");
+          }
         },
         {
-        text: "No",
-        click: function () {
-          select = {};
-          div.dialog("close");
-        }
+          text: "No",
+          click: function () {
+            select = {};
+            div.dialog("close");
+          }
         }
       ]
     });
   }
 
+
+  //dynamically add store
   function addStore(store) {
     $("#stores > tbody:last-child").append("<tr><td>" + store.name + "</td><td>" + store.location + "</td><td><button class='btn btn-default'>Select</button></td></tr>");
   }
@@ -87,6 +90,7 @@ $(document).ready(function() {
     console.log("store select");
   });
 
+  //dynamically add product
   function addProduct(product) {
     $("#products > tbody:last-child").append("<tr><td>" + product.name + "</td><td>" + product.price + "</td><td>" + product.material + "</td><td>" + product.weight + "<td><button class='btn btn-default'>Add to Cart</button></td></tr>");
   }
