@@ -2,7 +2,9 @@ $(document).ready(function() {
 
   //create new instances of Customer prototype
   var natasha = new Customer("Natasha", "30.00");
+  addCustomer(natasha);
   var flip = new Customer("Flip", "15.00");
+  addCustomer(flip);
 
   //create new instances of Product prototype
   var mug = new Product("mug", "3.00", "ceramic", "0.25");
