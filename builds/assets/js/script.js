@@ -14,13 +14,17 @@ $(document).ready(function() {
   var flip = new Customer("Flip", "15.00");
 
   //user adds new customer --> need to attach new customer with new Customer prototype
-  $("button").on("click", ".add-customer", function() {
+  $(".customers-container").on("click", ".add-customer", function() {
     console.log("here");
     var newCustomerName = prompt("Please enter your name");
     var newCustomerWallet = prompt("Please enter the amount in your wallet");
-    console.log(newCustomerName + " " + newCustomerWallet);
-    $("#customers > tbody:last-child").append("<tr><td>" + newCustomerName + "</td><td>" + newCustomerWallet + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
+    var newCustomer = new Customer(newCustomerName, newCustomerWallet);
+    addCustomer(newCustomer);
   });
+
+  function addCustomer(customer) {
+    $("#customers > tbody:last-child").append("<tr><td>" + newCustomer.name + "</td><td>" + newCustomer.cashMoney + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
+  }
 
   //user selects customer
   $("#customers").on("click", ".select", function() {
