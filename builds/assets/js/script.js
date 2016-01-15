@@ -1,7 +1,8 @@
-$(document).ready(function() {
 
-  var select;
   var customers = [];
+  var select;
+
+$(document).ready(function() {
 
   //create new instances of Customer prototype
   var natasha = new Customer("Natasha", "30.00");
@@ -43,8 +44,13 @@ $(document).ready(function() {
   }
 
   //user selects customer
-  $("#customers").on("click", ".select", function() {
-    // for (var i = 0; i < )
+  $("#customers").on("click", ".select", function(customers, customer) {
+    for (var i = 0; i < customers.length; i++) {
+      if ("customer.name == customers[i].name") {
+        select = customer;
+      }
+    }
+    console.log(select);
   });
 
   function addStore(store) {
