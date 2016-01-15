@@ -90,7 +90,12 @@ $(document).ready(function() {
 
   //user selects store
   $("#stores").on("click", "button", function() {
-    console.log("store select");
+    for (var i = 0; i < stores.length; i++) {
+      if ($(this).parent().siblings()[0].innerHTML == stores[i].name) {
+        selectStore = stores[i];
+      }
+    }
+    console.log(selectStore);
   });
 
   //dynamically add product
