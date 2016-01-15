@@ -68,6 +68,7 @@ $(document).ready(function() {
             console.log(select);
             div.dialog("close");
             showProducts();
+            welcomeCustomer();
           }
         },
         {
@@ -79,6 +80,11 @@ $(document).ready(function() {
         }
       ]
     });
+  }
+
+  //welcome customer
+  function welcomeCustomer() {
+    $("nav p").html("Hi " + select.name + "!");
   }
 
 
@@ -124,10 +130,6 @@ $(document).ready(function() {
     });
   }
 
-//welcome customer
-function welcomeCustomer() {
-  $("nav p:first").html("Hi " + select.name + "!");
-}
 
 //show products container when a customer and store have been selected and hides customers and stores
   function showProducts() {
