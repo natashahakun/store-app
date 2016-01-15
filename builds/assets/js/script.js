@@ -55,28 +55,28 @@ $(document).ready(function() {
   });
 
 
-function confirm(){
-  var msg = "Are you " + select.name;
-  var div = $("<div>" + msg + "</div>");
-  div.dialog({
-    buttons: [
-      {
-      text: "Yes",
-      click: function () {
-        $(".select").css("display", "none");
-        div.dialog("close");
-      }
-      },
-      {
-      text: "No",
-      click: function () {
-        select = {};
-        div.dialog("close");
-      }
-      }
-    ]
-  });
-}
+  function confirm(){
+    var msg = "Are you " + select.name;
+    var div = $("<div>" + msg + "</div>");
+    div.dialog({
+      buttons: [
+        {
+        text: "Yes",
+        click: function () {
+          $(".select").css("display", "none");
+          div.dialog("close");
+        }
+        },
+        {
+        text: "No",
+        click: function () {
+          select = {};
+          div.dialog("close");
+        }
+        }
+      ]
+    });
+  }
 
   function addStore(store) {
     $("#stores > tbody:last-child").append("<tr><td>" + store.name + "</td><td>" + store.location + "</td><td><button class='btn btn-default'>Select</button></td></tr>");
