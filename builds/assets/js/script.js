@@ -41,7 +41,7 @@ $(document).ready(function() {
   //find product amount of one product and then create function that calls that function on all the products  indexOf  if store is out of product or customer out of money, don't allow purchase
 
   //use object constructor to create Product prototype
-  var Product = function(name, price, material, weight) {
+  function Product(name, price, material, weight) {
     this.name = name;
     this.price = price;
     this.material = material;
@@ -50,11 +50,11 @@ $(document).ready(function() {
     this.sayWeight = function(product) {
       return "This product weighs " + Product.weight + " pounds.";
     };
-  };
+  }
 
 
   //use object constructor to create store prototype
-  var Store = function(name, location) {
+  function Store(name, location) {
 
     this.name = name;
     this.location = location;
@@ -83,11 +83,11 @@ $(document).ready(function() {
       var index = this.products.indexOf(product);
       this.products.splice(index, 1);
     };
-  };
+  }
 
 
   //use object constructor to create customer prototype
-  var Customer = function(name, cashMoney) {
+  function Customer(name, cashMoney) {
 
     this.name = name;
     this.cashMoney = cashMoney;
@@ -114,10 +114,10 @@ $(document).ready(function() {
       this.cashMoney -= Product.price;
       return "I have $" + this.cashMoney + " remaining in my wallet.";
     };
-  };
+  }
 
 
-  var Transaction = function(store, customer, product) {
+  var transaction = function(store, customer, product) {
     store.purchase(product);
     customer.purchase(product);
   };
