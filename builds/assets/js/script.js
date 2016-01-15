@@ -85,11 +85,12 @@ $(document).ready(function() {
   //dynamically add store
   function addStore(store) {
     $("#stores > tbody:last-child").append("<tr><td>" + store.name + "</td><td>" + store.location + "</td><td><button class='btn btn-default'>Select</button></td></tr>");
+    stores.push(store);
   }
 
   //user selects store
   $("#stores").on("click", "button", function() {
-    console.log("store select")
+    console.log("store select");
   });
 
   //dynamically add product
