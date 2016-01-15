@@ -1,8 +1,8 @@
 
   var customers = [];
   var stores = [];
-  var select;
-  var selectStore;
+  var select = {};
+  var selectStore = {};
 
 $(document).ready(function() {
 
@@ -67,6 +67,7 @@ $(document).ready(function() {
             $(".customers-container button").css("display", "none");
             console.log(select);
             div.dialog("close");
+            showProducts();
           }
         },
         {
@@ -109,6 +110,7 @@ $(document).ready(function() {
             $("#stores button").css("display", "none");
             console.log(selectStore);
             div.dialog("close");
+            showProducts();
           }
         },
         {
@@ -120,6 +122,14 @@ $(document).ready(function() {
         }
       ]
     });
+  }
+
+
+//show products container when a customer and store have been selected
+  function showProducts() {
+    if (jQuery.isEmptyObject(select) === false && jQuery.isEmptyObject(selectStore) === false) {
+      $(".products-container").css("display", "block");
+    }
   }
 
 
