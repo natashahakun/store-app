@@ -1,7 +1,7 @@
 {
-  "name": "healingHands",
+  "name": "storeApp",
   "version": "0.0.1",
-  "description": "A massage website",
+  "description": "An OOP practice website",
   "repository": {
     "type": "git",
     "url": ""
