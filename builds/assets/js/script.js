@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
 //user adds new customer --> need to attach new customer with new Customer prototype
-  $("button.add-customer").click(function(){
+  $("#customers").on("click", ".add-customer", function(){
     console.log("here");
     var newCustomerName = prompt("Please enter your name");
     var newCustomerWallet = prompt("Please enter the amount in your wallet");
@@ -11,18 +11,18 @@ $(document).ready(function(){
   })
 
 //user selects customer
-  $("#customers .select").click(function(){
+  $("#customers").on("click", ".select", function(){
     console.log("customer select");
     // var signIn = prompt("Would you like to sign in?");
   })
 
 //user selects store
-  $("#stores button").click(function(){
+  $("#stores").on("click", "button", function(){
     console.log("store select");
   })
 
 //user selects product
-  $("#products button").click(function(){
+  $("#products").on("click", "button", function(){
     console.log("product select");
   })
 
