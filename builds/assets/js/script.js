@@ -84,7 +84,7 @@ $(document).ready(function() {
 
   //welcome customer
   function welcomeCustomer() {
-    $("nav p").html("Hi " + select.name + "!");
+    $("nav p:last").html("Hi " + select.name + "!");
   }
 
 
@@ -117,6 +117,7 @@ $(document).ready(function() {
             console.log(selectStore);
             div.dialog("close");
             showProducts();
+            welcomeStore();
           }
         },
         {
@@ -130,8 +131,13 @@ $(document).ready(function() {
     });
   }
 
+  //welcome to store
+  function welcomeStore() {
+    $("nav p:first").html("Welcome to " + selectStore.name + ".");
+  }
 
-//show products container when a customer and store have been selected and hides customers and stores
+
+  //show products container when a customer and store have been selected and hides customers and stores
   function showProducts() {
     if (jQuery.isEmptyObject(select) === false && jQuery.isEmptyObject(selectStore) === false) {
       $(".customers-store-container").css("display", "none");
