@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
   var select;
+  var customers = [];
 
   //create new instances of Customer prototype
   var natasha = new Customer("Natasha", "30.00");
@@ -38,11 +39,12 @@ $(document).ready(function() {
 //populate customers table
   function addCustomer(customer) {
     $("#customers > tbody:last-child").append("<tr><td>" + customer.name + "</td><td>" + customer.cashMoney + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
+    customers.push(customer);
   }
 
   //user selects customer
   $("#customers").on("click", ".select", function() {
-    console.log("customer select");
+    // for (var i = 0; i < )
   });
 
   function addStore(store) {
