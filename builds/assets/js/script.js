@@ -84,7 +84,7 @@ $(document).ready(function() {
 
   //welcome customer
   function welcomeCustomer() {
-    $("nav p:last").html("Hi " + select.name + "!");
+    $("nav li:first").html("Hi " + select.name + "!");
   }
 
 
@@ -133,7 +133,7 @@ $(document).ready(function() {
 
   //welcome to store
   function welcomeStore() {
-    $("nav p:first").html("Welcome to " + selectStore.name + ".");
+    $("nav li:last").html("Welcome to " + selectStore.name + ".");
   }
 
 
