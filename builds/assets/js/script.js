@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  var select;
+
   //create new instances of Customer prototype
   var natasha = new Customer("Natasha", "30.00");
   addCustomer(natasha);
