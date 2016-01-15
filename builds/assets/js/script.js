@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+  //create new instances of Product prototype
+  var mug = new Product("mug", "3.00", "ceramic", "0.25");
+  var book = new Product("book", "7.99", "paper", "1.00");
+  var pen = new Product("pen", "1.00", "plastic", "0.10");
+
+  //create new instances of Store prototype
+  var target = new Store("Target", "Richmond");
+  var nordstrom = new Store("Nordstrom", "Richmond");
+
+  //create new instances of Customer prototype
+  var natasha = new Customer("Natasha", "30.00");
+  var flip = new Customer("Flip", "15.00");
+
   //user adds new customer --> need to attach new customer with new Customer prototype
   $("button").on("click", ".add-customer", function() {
     console.log("here");
@@ -108,19 +121,5 @@ $(document).ready(function() {
     store.purchase(product);
     customer.purchase(product);
   };
-
-
-  //create new instances of Product prototype
-  var mug = new Product("mug", "3.00", "ceramic", "0.25");
-  var book = new Product("book", "7.99", "paper", "1.00");
-  var pen = new Product("pen", "1.00", "plastic", "0.10");
-
-  //create new instances of Store prototype
-  var target = new Store("Target", "Richmond");
-  var nordstrom = new Store("Nordstrom", "Richmond");
-
-  //create new instances of Customer prototype
-  var natasha = new Customer("Natasha", "30.00");
-  var flip = new Customer("Flip", "15.00");
 
 });
