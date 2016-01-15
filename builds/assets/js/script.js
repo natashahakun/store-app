@@ -8,11 +8,6 @@ $(document).ready(function() {
   var becca = new Customer("Becca", "77.25");
   addCustomer(becca);
 
-  //create new instances of Product prototype
-  var mug = new Product("mug", "3.00", "ceramic", "0.25");
-  var book = new Product("book", "7.99", "paper", "1.00");
-  var pen = new Product("pen", "1.00", "plastic", "0.10");
-
   //create new instances of Store prototype
   var target = new Store("Target", "Richmond");
   addStore(target);
@@ -20,6 +15,11 @@ $(document).ready(function() {
   addStore(nordstrom);
   var kroger = new Store("Kroger", "Richmond");
   addStore(kroger);
+
+  //create new instances of Product prototype
+  var mug = new Product("mug", "3.00", "ceramic", "0.25");
+  var book = new Product("book", "7.99", "paper", "1.00");
+  var pen = new Product("pen", "1.00", "plastic", "0.10");
 
 
   //user adds new customer
@@ -48,6 +48,10 @@ $(document).ready(function() {
   $("#stores").on("click", "button", function() {
     console.log("store select");
   });
+
+  function addProduct(product) {
+    $("#products > tbody:last-child").append("<tr><td>" + product.name + "</td><td>" + product.price + "</td><td>" + product.material + "</td><td>" + product.weight + "<td><button class='btn btn-default'>Add to Cart</button></td></tr>");
+  }
 
   //user selects product
   $("#products").on("click", "button", function() {
