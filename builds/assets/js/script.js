@@ -18,8 +18,11 @@ $(document).ready(function() {
 
   //create new instances of Product prototype
   var mug = new Product("mug", "3.00", "ceramic", "0.25");
+  addProduct(mug);
   var book = new Product("book", "7.99", "paper", "1.00");
+  addProduct(book);
   var pen = new Product("pen", "1.00", "plastic", "0.10");
+  addProduct(pen);
 
 
   //user adds new customer
