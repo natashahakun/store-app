@@ -5,6 +5,8 @@ $(document).ready(function() {
   addCustomer(natasha);
   var flip = new Customer("Flip", "15.00");
   addCustomer(flip);
+  var becca = new Customer("Becca", "77.25");
+  addCustomer(becca);
 
   //create new instances of Product prototype
   var mug = new Product("mug", "3.00", "ceramic", "0.25");
