@@ -39,7 +39,7 @@ $(document).ready(function() {
     addCustomer(newCustomer);
   });
 
-//dynamically populate customers table
+  //dynamically populate customers table
   function addCustomer(customer) {
     $("#customers > tbody:last-child").append("<tr><td>" + customer.name + "</td><td>" + customer.cashMoney + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
     customers.push(customer);
@@ -52,11 +52,10 @@ $(document).ready(function() {
         select = customers[i];
       }
     }
-    console.log(select);
     confirm();
   });
 
-//confirm selected customer
+  //confirm selected customer
   function confirm(){
     var msg = "Are you " + select.name + "?";
     var div = $("<div>" + msg + "</div>");
@@ -95,8 +94,34 @@ $(document).ready(function() {
         selectStore = stores[i];
       }
     }
-    console.log(selectStore);
+    confirmStore();
   });
+
+  //confirm selected store
+  function confirmStore(){
+    var msg = "Do you select " + selectStore.name + "?";
+    var div = $("<div>" + msg + "</div>");
+    div.dialog({
+      buttons: [
+        {
+          text: "Yes",
+          click: function () {
+            $("#stores button").css("display", "none");
+            console.log(selectStore);
+            div.dialog("close");
+          }
+        },
+        {
+          text: "No",
+          click: function () {
+            select = {};
+            div.dialog("close");
+          }
+        }
+      ]
+    });
+  }
+
 
   //dynamically add product
   function addProduct(product) {
