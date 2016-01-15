@@ -13,7 +13,11 @@ $(document).ready(function() {
 
   //create new instances of Store prototype
   var target = new Store("Target", "Richmond");
+  addStore(target);
   var nordstrom = new Store("Nordstrom", "Richmond");
+  addStore(nordstrom);
+  var kroger = new Store("Kroger", "Richmond");
+  addStore(kroger);
 
 
   //user adds new customer
