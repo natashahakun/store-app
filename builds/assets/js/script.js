@@ -44,14 +44,39 @@ $(document).ready(function() {
   }
 
   //user selects customer
-  $("#customers").on("click", ".select", function(customers, customer) {
+  $("#customers").on("click", ".select", function() {
     for (var i = 0; i < customers.length; i++) {
-      if ("customer.name == customers[i].name") {
-        select = customer;
+      if ($(this).parent().siblings()[0].innerHTML == customers[i].name) {
+        select = customers[i];
       }
     }
     console.log(select);
+    confirm();
   });
+
+
+function confirm(){
+  var msg = "Are you " + select.name;
+  var div = $("<div>" + msg + "</div>");
+  div.dialog({
+    buttons: [
+      {
+      text: "Yes",
+      click: function () {
+        $(".select").css("display", "none");
+        div.dialog("close");
+      }
+      },
+      {
+      text: "No",
+      click: function () {
+        select = {};
+        div.dialog("close");
+      }
+      }
+    ]
+  });
+}
 
   function addStore(store) {
     $("#stores > tbody:last-child").append("<tr><td>" + store.name + "</td><td>" + store.location + "</td><td><button class='btn btn-default'>Select</button></td></tr>");
