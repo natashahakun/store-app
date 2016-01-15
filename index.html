@@ -20,9 +20,9 @@
       <h2>Shopping Made Easier</h2>
     </div>
   </div>
-  <div class="container customers-container">
+  <div class="container">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 customers-container">
         <h2>Select Customer</h2>
         <table id="customers" class="table-responsive table">
           <thead>
@@ -57,8 +57,12 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 products-container">
         <h2 class="text-center">Shop <span>Our</span> Products</h2>
+        <style>
+        .products-container {display:none};
+
+        </style>
         <table id="products" class="table table-striped">
           <thead>
             <tr>
