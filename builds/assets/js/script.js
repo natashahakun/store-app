@@ -128,6 +128,7 @@ $(document).ready(function() {
 //show products container when a customer and store have been selected
   function showProducts() {
     if (jQuery.isEmptyObject(select) === false && jQuery.isEmptyObject(selectStore) === false) {
+      $(".customers-store-container").css("display", "none");
       $(".products-container").css("display", "block");
     }
   }
