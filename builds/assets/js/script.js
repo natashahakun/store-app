@@ -1,6 +1,8 @@
 
   var customers = [];
+  var stores = [];
   var select;
+  var selectStore;
 
 $(document).ready(function() {
 
@@ -37,7 +39,7 @@ $(document).ready(function() {
     addCustomer(newCustomer);
   });
 
-//populate customers table
+//dynamically populate customers table
   function addCustomer(customer) {
     $("#customers > tbody:last-child").append("<tr><td>" + customer.name + "</td><td>" + customer.cashMoney + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
     customers.push(customer);
@@ -87,7 +89,7 @@ $(document).ready(function() {
 
   //user selects store
   $("#stores").on("click", "button", function() {
-    console.log("store select");
+    console.log("store select")
   });
 
   //dynamically add product
