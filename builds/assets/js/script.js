@@ -11,18 +11,18 @@ $(document).ready(function(){
   })
 
 //user selects customer
-  $("#customers").find(".select").click(function(){
+  $("#customers .select").click(function(){
     console.log("customer select");
     // var signIn = prompt("Would you like to sign in?");
   })
 
 //user selects store
-  $("#stores").find("button").click(function(){
+  $("#stores button").click(function(){
     console.log("store select");
   })
 
 //user selects product
-  $("#products").find("button").click(function(){
+  $("#products button").click(function(){
     console.log("product select");
   })
 
