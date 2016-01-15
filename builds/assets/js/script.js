@@ -15,7 +15,6 @@ $(document).ready(function() {
 
   //user adds new customer --> need to attach new customer with new Customer prototype
   $(".customers-container").on("click", ".add-customer", function() {
-    console.log("here");
     var newCustomerName = prompt("Please enter your name");
     var newCustomerWallet = prompt("Please enter the amount in your wallet");
     var newCustomer = new Customer(newCustomerName, newCustomerWallet);
@@ -23,7 +22,7 @@ $(document).ready(function() {
   });
 
   function addCustomer(customer) {
-    $("#customers > tbody:last-child").append("<tr><td>" + newCustomer.name + "</td><td>" + newCustomer.cashMoney + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
+    $("#customers > tbody:last-child").append("<tr><td>" + customer.name + "</td><td>" + customer.cashMoney + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
   }
 
   //user selects customer
