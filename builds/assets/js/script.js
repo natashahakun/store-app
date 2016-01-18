@@ -43,7 +43,7 @@ $(document).ready(function() {
 
   //dynamically populate customers table
   function addCustomer(customer) {
-    $("#customers > tbody:last-child").append("<tr><td>" + customer.name + "</td><td>" + customer.cashMoney + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
+    $("#customers > tbody:last-child").append("<tr><td>" + customer.name + "</td><td>" + customer.wallet + "</td><td><button class='btn btn-default select'>Select</button></td></tr>");
     customers.push(customer);
   }
 
@@ -174,15 +174,15 @@ $(document).ready(function() {
 
 
   //object constructor to create customer prototype
-  function Customer(name, cashMoney) {
+  function Customer(name, wallet) {
 
     this.name = name;
-    this.cashMoney = cashMoney;
+    this.wallet = wallet;
     this.cart = [];
 
     //return customer introduction name and money
     this.introduction = function() {
-      return "Hi my name is " + this.name + " and I have $" + this.cashMoney + " in my wallet.";
+      return "Hi my name is " + this.name + " and I have $" + this.wallet + " in my wallet.";
     };
 
     //add product to customer's cart
@@ -201,8 +201,8 @@ $(document).ready(function() {
 
     //customer purchases product
     this.purchase = function(product) {
-      this.cashMoney -= Product.price;
-      return "I have $" + this.cashMoney + " remaining in my wallet.";
+      this.wallet -= Product.price;
+      return "I have $" + this.wallet + " remaining in my wallet.";
     };
   }
 
