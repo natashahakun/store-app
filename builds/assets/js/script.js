@@ -136,7 +136,7 @@ $(document).ready(function() {
 
   //welcome to store added to nav
   function welcomeStore() {
-    $("nav li:last").html("Welcome to " + selectStore.name + ".");
+    $("nav li:nth-child(2)").html("Welcome to " + selectStore.name + ".");
   }
 
 
@@ -145,12 +145,14 @@ $(document).ready(function() {
     if (jQuery.isEmptyObject(select) === false && jQuery.isEmptyObject(selectStore) === false) {
       $(".customers-store-container").css("display", "none");
       $(".products-container").css("display", "block");
+      cartAvailable();
     }
   }
 
-  // function cartAvailable() {
-  //   $("nav li:last").append("<a>" + "Cart" + "</a>");
-  // }
+//dynamically add cart
+  function cartAvailable() {
+    $("nav li:last").append("<button class ='btn btn-default navbar-btn'>" + "Your Cart" + "</button>");
+  }
 
 
   //dynamically add product
