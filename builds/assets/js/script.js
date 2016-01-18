@@ -1,8 +1,10 @@
 
   var customers = [];
   var stores = [];
+  var products = [];
   var select = {};
   var selectStore = {};
+  var selectProduct = {};
 
 $(document).ready(function() {
 
@@ -97,8 +99,9 @@ $(document).ready(function() {
   //user selects store
   $("#stores").on("click", "button", function() {
     for (var i = 0; i < stores.length; i++) {
-      if ($(this).parent().siblings()[0].innerHTML == stores[i].name) {
-        selectStore = stores[i];
+      var store = stores[i];
+      if ($(this).parent().siblings()[0].innerHTML == store.name) {
+        selectStore = store;
       }
     }
     confirmStore();
@@ -149,11 +152,18 @@ $(document).ready(function() {
   //dynamically add product
   function addProduct(product) {
     $("#products > tbody:last-child").append("<tr><td>" + product.name + "</td><td>" + product.price + "</td><td>" + product.material + "</td><td>" + product.weight + "<td><button class='btn btn-default'>Add to Cart</button></td></tr>");
+    products.push(product);
   }
 
   //user selects product
   $("#products").on("click", "button", function() {
-    console.log("product select");
+    var product = products[i];
+    for (var i = 0; i < products.length; i++) {
+      if ($(this).parent().siblings()[0].innerHTML == product.name) {
+        selectProduct = product;
+      }
+    }
+    console.log(selectProduct);
   });
 
 
