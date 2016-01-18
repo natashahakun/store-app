@@ -154,7 +154,6 @@ $(document).ready(function() {
     $("nav li:last").append("<button class ='btn btn-default navbar-btn'>" + "Your Cart" + "</button>");
   }
 
-
   //dynamically add product
   function addProduct(product) {
     $("#products > tbody:last-child").append("<tr><td>" + product.name + "</td><td>" + product.price + "</td><td>" + product.material + "</td><td>" + product.weight + "<td><button class='btn btn-default'>Add to Cart</button></td></tr>");
@@ -173,8 +172,10 @@ $(document).ready(function() {
     console.log(select.cart);
   });
 
+  //show cart-container
   $("nav").on("click", "button", function() {
     console.log(select.productsInCart());
+    $(".cart-container").css("display", "block");
   });
 
 
