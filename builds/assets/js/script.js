@@ -5,7 +5,7 @@
   var select = {};
   var selectStore = {};
   var selectProduct = {};
-  var totalCost;
+  var totalCost = 0;
 
 $(document).ready(function() {
 
@@ -28,7 +28,7 @@ $(document).ready(function() {
   //create new instances of Product prototype
   var mug = new Product("mug", 3.00, "ceramic", 0.25);
   addProduct(mug);
-  var book = new Product("book", 7.99, "paper", 1.00);
+  var book = new Product("book", 7.00, "paper", 1.00);
   addProduct(book);
   var pen = new Product("pen", 1.00, "plastic", 0.10);
   addProduct(pen);
@@ -188,7 +188,14 @@ $(document).ready(function() {
   $("#cart").on("click", "button", function() {
     var rowRemove = $(this).parents("tr");
     rowRemove.remove();
-    removeProduct(select.cart, this);
+    var selectProduct;
+    for (var i = 0; i < products.length; i++) {
+      var product = products[i];
+      if ($(this).parent().siblings()[0].innerHTML == product.name) {
+        selectProduct = product;
+      }
+    }
+    removeProduct(select.cart, selectProduct);
   });
 
   //remove product from cart array
@@ -197,7 +204,7 @@ $(document).ready(function() {
     cart.splice(remove, 1);
   }
 
-
+  //user makes purchase when clicking on checkout
   $(".cart-container").on("click", ".checkout", function() {
     console.log(select.cart);
     select.purchase(cart);
@@ -229,18 +236,19 @@ $(document).ready(function() {
       }
     };
 
-    //customer purchases product
-    // this.purchase = function(product) {
-    //   this.wallet -= Product.price;
-    //   return "I have $" + this.wallet + " remaining in my wallet.";
-    // };
-
     this.purchase = function(cart) {
       for (var i = 0; i < this.cart.length; i++) {
         totalCost += this.cart[i].price;
       }
       console.log(totalCost);
-      // this.wallet -= totalCost;
+      this.wallet -= totalCost;
+      if (this.wallet >= 0) {
+        select.cart = [];
+        console.log("Your purchase costs $" + totalCost + ". " + "You have $" + this.wallet + " remaining in your wallet.");
+      } else {
+        this.wallet += totalCost;
+        console.log("Purchase denied. You do not have enough money in your wallet to make this purchase.");
+      }
     };
   }
 
