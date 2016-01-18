@@ -253,8 +253,7 @@ $(document).ready(function() {
     };
   }
 
-
-  //find product amount of one product and then create function that calls that function on all the products  indexOf  if store is out of product or customer out of money, don't allow purchase
+  // if store is out of product or customer out of money, don't allow purchase
 
   //object constructor to create Product prototype
   function Product(name, price, material, weight) {
