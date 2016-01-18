@@ -244,6 +244,7 @@ $(document).ready(function() {
       this.wallet -= totalCost;
       if (this.wallet >= 0) {
         select.cart = [];
+        $("#cart tbody").empty();
         console.log("Your purchase costs $" + totalCost + ". " + "You have $" + this.wallet + " remaining in your wallet.");
       } else {
         this.wallet += totalCost;
