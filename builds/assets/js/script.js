@@ -179,9 +179,15 @@ $(document).ready(function() {
 
   //user adds selected product to customer cart
   function addCart(product) {
-    $("#cart > tbody:last-child").append("<tr><td>" + product.name + "</td><td>" + product.price + "</td><td><button class='btn btn-default'>Remove</button></td></tr>");
+    $("#cart > tbody:last-child").append("<tr><td>" + product.name + "</td><td>" + product.price + "</td><td><button class='btn btn-default'>X</button></td></tr>");
     select.addToCart(product);
   }
+
+  //user removes item from cart
+  $("#cart").on("click", "button", function() {
+    console.log($(this).parents("tr").remove());
+  });
+
 
   //object constructor to create customer prototype
   function Customer(name, wallet) {
