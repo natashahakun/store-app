@@ -171,11 +171,10 @@ $(document).ready(function() {
     }
     select.addToCart(selectProduct);
     console.log(select.cart);
-    console.log(select.productsInCart());
   });
 
   $("nav").on("click", "button", function() {
-    console.log("here");
+    console.log(select.productsInCart());
   });
 
 
@@ -194,7 +193,6 @@ $(document).ready(function() {
     //add product to customer's cart
     this.addToCart = function(product) {
       this.cart.push(product);
-      return "I have added a " + product.name + " to my cart.";
     };
 
     //show products in customer's cart
@@ -227,6 +225,16 @@ $(document).ready(function() {
       return "This product weighs " + Product.weight + " pounds.";
     };
   }
+
+  // function Electronic(test) {
+  //   this.test = test;
+  //
+  //   this.testSuccess = function(product) {
+  //     return "This " + Product.name + " works.";
+  //   }
+  // }
+  //
+  // Electronic.prototype
 
 
   //object constructor to create store prototype
