@@ -148,6 +148,10 @@ $(document).ready(function() {
     }
   }
 
+  // function shoppingBagAvailable() {
+  //   $("nav li:last").append("<a>" + "Shopping Bag" + "</a>");
+  // }
+
 
   //dynamically add product
   function addProduct(product) {
@@ -155,15 +159,17 @@ $(document).ready(function() {
     products.push(product);
   }
 
-  //user selects product
+  //user selects product and adds to shopping bag
   $("#products").on("click", "button", function() {
-    var product = products[i];
     for (var i = 0; i < products.length; i++) {
+      var product = products[i];
       if ($(this).parent().siblings()[0].innerHTML == product.name) {
         selectProduct = product;
       }
     }
-    console.log(selectProduct);
+    select.addToShoppingBag(selectProduct);
+    console.log(select.shoppingBag);
+    console.log(select.itemsInShoppingBag());
   });
 
 
