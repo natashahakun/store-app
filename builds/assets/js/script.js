@@ -5,15 +5,16 @@
   var select = {};
   var selectStore = {};
   var selectProduct = {};
+  var totalCost;
 
 $(document).ready(function() {
 
   //create new instances of Customer prototype
-  var natasha = new Customer("Natasha", "30.00");
+  var natasha = new Customer("Natasha", 30.00);
   addCustomer(natasha);
-  var flip = new Customer("Flip", "15.00");
+  var flip = new Customer("Flip", 15.00);
   addCustomer(flip);
-  var becca = new Customer("Becca", "77.25");
+  var becca = new Customer("Becca", 77.25);
   addCustomer(becca);
 
   //create new instances of Store prototype
@@ -25,11 +26,11 @@ $(document).ready(function() {
   addStore(kroger);
 
   //create new instances of Product prototype
-  var mug = new Product("mug", "3.00", "ceramic", "0.25");
+  var mug = new Product("mug", 3.00, "ceramic", 0.25);
   addProduct(mug);
-  var book = new Product("book", "7.99", "paper", "1.00");
+  var book = new Product("book", 7.99, "paper", 1.00);
   addProduct(book);
-  var pen = new Product("pen", "1.00", "plastic", "0.10");
+  var pen = new Product("pen", 1.00, "plastic", 0.10);
   addProduct(pen);
 
 
@@ -183,9 +184,23 @@ $(document).ready(function() {
     select.addToCart(product);
   }
 
-  //user removes item from cart
+  //user removes product from cart-container
   $("#cart").on("click", "button", function() {
-    console.log($(this).parents("tr").remove());
+    var rowRemove = $(this).parents("tr");
+    rowRemove.remove();
+    removeProduct(select.cart, this);
+  });
+
+  //remove product from cart array
+  function removeProduct(cart, product) {
+    var remove = cart.indexOf(product);
+    cart.splice(remove, 1);
+  }
+
+
+  $(".cart-container").on("click", ".checkout", function() {
+    console.log(select.cart);
+    select.purchase(cart);
   });
 
 
@@ -215,9 +230,17 @@ $(document).ready(function() {
     };
 
     //customer purchases product
-    this.purchase = function(product) {
-      this.wallet -= Product.price;
-      return "I have $" + this.wallet + " remaining in my wallet.";
+    // this.purchase = function(product) {
+    //   this.wallet -= Product.price;
+    //   return "I have $" + this.wallet + " remaining in my wallet.";
+    // };
+
+    this.purchase = function(cart) {
+      for (var i = 0; i < this.cart.length; i++) {
+        totalCost += this.cart[i].price;
+      }
+      console.log(totalCost);
+      // this.wallet -= totalCost;
     };
   }
 
