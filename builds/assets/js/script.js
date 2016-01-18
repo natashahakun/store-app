@@ -57,7 +57,7 @@ $(document).ready(function() {
     confirm();
   });
 
-  //confirm selected customer
+  //user confirms selected customer
   function confirm(){
     var msg = "Are you " + select.name + "?";
     var div = $("<div>" + msg + "</div>");
@@ -84,7 +84,7 @@ $(document).ready(function() {
     });
   }
 
-  //welcome customer
+  //welcome customer added to nav
   function welcomeCustomer() {
     $("nav li:first").html("Hi " + select.name + "!");
   }
@@ -107,7 +107,7 @@ $(document).ready(function() {
     confirmStore();
   });
 
-  //confirm selected store
+  //user confirms selected store
   function confirmStore(){
     var msg = "Do you select " + selectStore.name + "?";
     var div = $("<div>" + msg + "</div>");
@@ -134,13 +134,13 @@ $(document).ready(function() {
     });
   }
 
-  //welcome to store
+  //welcome to store added to nav
   function welcomeStore() {
     $("nav li:last").html("Welcome to " + selectStore.name + ".");
   }
 
 
-  //show products container when a customer and store have been selected and hides customers and stores
+  //show products container when a customer and store have been selected and hide customers and stores
   function showProducts() {
     if (jQuery.isEmptyObject(select) === false && jQuery.isEmptyObject(selectStore) === false) {
       $(".customers-store-container").css("display", "none");
@@ -169,17 +169,18 @@ $(document).ready(function() {
     }
     select.addToCart(selectProduct);
     console.log(select.cart);
-    console.log(select.itemsInCart());
+    console.log(select.productsInCart());
   });
 
 
-  //use object constructor to create customer prototype
+  //object constructor to create customer prototype
   function Customer(name, cashMoney) {
 
     this.name = name;
     this.cashMoney = cashMoney;
     this.cart = [];
 
+    //return customer introduction name and money
     this.introduction = function() {
       return "Hi my name is " + this.name + " and I have $" + this.cashMoney + " in my wallet.";
     };
@@ -190,13 +191,15 @@ $(document).ready(function() {
       return "I have added a " + product.name + " to my cart.";
     };
 
-    this.itemsInCart = function() {
+    //show products in customer's cart
+    this.productsInCart = function() {
       var cartLength = this.cart.length;
       for (i = 0; i < cartLength; i++) {
         console.log(this.cart[i].name);
       }
     };
 
+    //customer purchases product
     this.purchase = function(product) {
       this.cashMoney -= Product.price;
       return "I have $" + this.cashMoney + " remaining in my wallet.";
@@ -206,20 +209,21 @@ $(document).ready(function() {
 
   //find product amount of one product and then create function that calls that function on all the products  indexOf  if store is out of product or customer out of money, don't allow purchase
 
-  //use object constructor to create Product prototype
+  //object constructor to create Product prototype
   function Product(name, price, material, weight) {
     this.name = name;
     this.price = price;
     this.material = material;
     this.weight = weight;
 
+    //return product weight
     this.sayWeight = function(product) {
       return "This product weighs " + Product.weight + " pounds.";
     };
   }
 
 
-  //use object constructor to create store prototype
+  //object constructor to create store prototype
   function Store(name, location) {
 
     this.name = name;
@@ -227,12 +231,12 @@ $(document).ready(function() {
     this.products = [];
     this.cashRegister = 100;
 
+    //return current store
     this.sayStore = function() {
       return "You are currently shopping in " + this.name + " in " + this.location;
     };
 
     //add each product to products[]
-
     this.addProduct = function(product) {
       this.products.push(product);
     };
@@ -244,6 +248,7 @@ $(document).ready(function() {
       }
     };
 
+    //purchase made from store
     this.purchase = function(product) {
       this.cashRegister += product.price;
       var index = this.products.indexOf(product);
@@ -251,7 +256,7 @@ $(document).ready(function() {
     };
   }
 
-
+  //transaction calls purchase for store and customer
   var transaction = function(store, customer, product) {
     store.purchase(product);
     customer.purchase(product);
