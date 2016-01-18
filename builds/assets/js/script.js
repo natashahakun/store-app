@@ -148,8 +148,8 @@ $(document).ready(function() {
     }
   }
 
-  // function shoppingBagAvailable() {
-  //   $("nav li:last").append("<a>" + "Shopping Bag" + "</a>");
+  // function cartAvailable() {
+  //   $("nav li:last").append("<a>" + "Cart" + "</a>");
   // }
 
 
@@ -159,7 +159,7 @@ $(document).ready(function() {
     products.push(product);
   }
 
-  //user selects product and adds to shopping bag
+  //user selects product and adds to cart
   $("#products").on("click", "button", function() {
     for (var i = 0; i < products.length; i++) {
       var product = products[i];
@@ -167,9 +167,9 @@ $(document).ready(function() {
         selectProduct = product;
       }
     }
-    select.addToShoppingBag(selectProduct);
-    console.log(select.shoppingBag);
-    console.log(select.itemsInShoppingBag());
+    select.addToCart(selectProduct);
+    console.log(select.cart);
+    console.log(select.itemsInCart());
   });
 
 
@@ -178,22 +178,22 @@ $(document).ready(function() {
 
     this.name = name;
     this.cashMoney = cashMoney;
-    this.shoppingBag = [];
+    this.cart = [];
 
     this.introduction = function() {
       return "Hi my name is " + this.name + " and I have $" + this.cashMoney + " in my wallet.";
     };
 
-    //add product to customer's shopping bag
-    this.addToShoppingBag = function(product) {
-      this.shoppingBag.push(product);
-      return "I have added a " + product.name + " to my shopping bag.";
+    //add product to customer's cart
+    this.addToCart = function(product) {
+      this.cart.push(product);
+      return "I have added a " + product.name + " to my cart.";
     };
 
-    this.itemsInShoppingBag = function() {
-      var shoppingBagLength = this.shoppingBag.length;
-      for (i = 0; i < shoppingBagLength; i++) {
-        console.log(this.shoppingBag[i].name);
+    this.itemsInCart = function() {
+      var cartLength = this.cart.length;
+      for (i = 0; i < cartLength; i++) {
+        console.log(this.cart[i].name);
       }
     };
 
