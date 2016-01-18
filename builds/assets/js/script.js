@@ -149,28 +149,16 @@ $(document).ready(function() {
     }
   }
 
-//dynamically add cart
-  function cartAvailable() {
-    $("nav li:last").append("<button class ='btn btn-default navbar-btn'>" + "Your Cart" + "</button>");
-  }
-
   //dynamically add product
   function addProduct(product) {
-    $("#products > tbody:last-child").append("<tr><td>" + product.name + "</td><td>" + product.price + "</td><td>" + product.material + "</td><td>" + product.weight + "<td><button class='btn btn-default'>Add to Cart</button></td></tr>");
+    $("#products > tbody:last-child").append("<tr><td>" + product.name + "</td><td>" + product.price + "</td><td>" + product.material + "</td><td>" + product.weight + "</td><td><button class='btn btn-default'>Add to Cart</button></td></tr>");
     products.push(product);
   }
 
-  //user selects product and adds to cart
-  $("#products").on("click", "button", function() {
-    for (var i = 0; i < products.length; i++) {
-      var product = products[i];
-      if ($(this).parent().siblings()[0].innerHTML == product.name) {
-        selectProduct = product;
-      }
-    }
-    select.addToCart(selectProduct);
-    console.log(select.cart);
-  });
+  //dynamically add Your Cart button to nav
+  function cartAvailable() {
+    $("nav li:last").append("<button class ='btn btn-default navbar-btn'>" + "Your Cart" + "</button>");
+  }
 
   //show cart-container
   $("nav").on("click", "button", function() {
@@ -178,6 +166,22 @@ $(document).ready(function() {
     $(".cart-container").css("display", "block");
   });
 
+  //user selects product
+  $("#products").on("click", "button", function() {
+    for (var i = 0; i < products.length; i++) {
+      var product = products[i];
+      if ($(this).parent().siblings()[0].innerHTML == product.name) {
+        selectProduct = product;
+      }
+    }
+    addCart(selectProduct);
+  });
+
+  //user adds selected product to customer cart
+  function addCart(product) {
+    $("#cart > tbody:last-child").append("<tr><td>" + product.name + "</td><td>" + product.price + "</td><td><button class='btn btn-default'>Remove</button></td></tr>");
+    select.addToCart(product);
+  }
 
   //object constructor to create customer prototype
   function Customer(name, wallet) {
