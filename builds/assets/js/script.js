@@ -174,6 +174,10 @@ $(document).ready(function() {
     console.log(select.productsInCart());
   });
 
+  $("nav").on("click", "button", function() {
+    console.log("here");
+  });
+
 
   //object constructor to create customer prototype
   function Customer(name, wallet) {
