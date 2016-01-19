@@ -206,9 +206,27 @@ $(document).ready(function() {
 
   //user makes purchase when clicking on checkout
   $(".cart-container").on("click", ".checkout", function() {
-    console.log(select.cart);
-    select.purchase(cart);
+    transaction(selectStore, select, select.cart);
   });
+
+  //transaction calls purchase for store and customer
+  function transaction(store, customer, cart) {
+    for (var i = 0; i < cart.length; i++) {
+      totalCost += cart[i].price;
+    }
+    console.log(totalCost);
+    customer.wallet -= totalCost;
+    if (customer.wallet >= 0) {
+      store.cashRegister += totalCost;
+      console.log(store.cashRegister);
+      console.log("Your purchase costs $" + totalCost + ". " + "You have $" + customer.wallet + " remaining in your wallet.");
+      customer.cart = [];
+      $("#cart tbody").empty();
+    } else {
+      customer.wallet += totalCost;
+      console.log("Purchase denied. You do not have enough money in your wallet to make this purchase.");
+    }
+  }
 
 
   //object constructor to create customer prototype
@@ -233,22 +251,6 @@ $(document).ready(function() {
       var cartLength = this.cart.length;
       for (i = 0; i < cartLength; i++) {
         console.log(this.cart[i].name);
-      }
-    };
-
-    this.purchase = function(cart) {
-      for (var i = 0; i < this.cart.length; i++) {
-        totalCost += this.cart[i].price;
-      }
-      console.log(totalCost);
-      this.wallet -= totalCost;
-      if (this.wallet >= 0) {
-        select.cart = [];
-        $("#cart tbody").empty();
-        console.log("Your purchase costs $" + totalCost + ". " + "You have $" + this.wallet + " remaining in your wallet.");
-      } else {
-        this.wallet += totalCost;
-        console.log("Purchase denied. You do not have enough money in your wallet to make this purchase.");
       }
     };
   }
@@ -296,26 +298,5 @@ $(document).ready(function() {
     this.addProduct = function(product) {
       this.products.push(product);
     };
-
-    //iterate through products to create inventory
-    this.inventory = function() {
-      for (i = 0; i < this.products.length; i++) {
-        console.log(this.products[i].name);
-      }
-    };
-
-    //purchase made from store
-    this.purchase = function(product) {
-      this.cashRegister += product.price;
-      var index = this.products.indexOf(product);
-      this.products.splice(index, 1);
-    };
   }
-
-  //transaction calls purchase for store and customer
-  var transaction = function(store, customer, product) {
-    store.purchase(product);
-    customer.purchase(product);
-  };
-
 });
