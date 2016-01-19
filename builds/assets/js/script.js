@@ -31,14 +31,20 @@ $(document).ready(function() {
   addProduct(book);
   var pen = new Product("pen", 1.00, "plastic", 0.10);
   addProduct(pen);
-  // var computer = new Electronic.prototype("computer", 800.00, "plastic", 6.00, "test");
+  // var computer = new Electronic("computer", 800.00, "plastic", 6.00, "test");
   // addProduct(computer);
 
 
   //user adds new customer
   $(".customers-container").on("click", ".add-customer", function() {
-    var newCustomerName = prompt("Please enter your name");
-    var newCustomerWallet = prompt("Please enter the amount in your wallet");
+    var newCustomerWallet;
+    var newCustomerName;
+    while (isNaN(newCustomerName) === false || newCustomerName === undefined) {
+      newCustomerName = prompt("Please enter your name");
+    }
+    while (isNaN(newCustomerWallet)) {
+      newCustomerWallet = prompt("Please enter the amount in your wallet");
+    }
     var newCustomer = new Customer(newCustomerName, newCustomerWallet);
     addCustomer(newCustomer);
   });
