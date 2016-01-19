@@ -32,6 +32,8 @@ $(document).ready(function() {
   addProduct(book);
   var pen = new Product("pen", 1.00, "plastic", 0.10);
   addProduct(pen);
+  // var computer = new Electronic.prototype("computer", 800.00, "plastic", 6.00, "test");
+  // addProduct(computer);
 
 
   //user adds new customer
@@ -204,6 +206,7 @@ $(document).ready(function() {
     cart.splice(remove, 1);
   }
 
+
   //user makes purchase when clicking on checkout
   $(".cart-container").on("click", ".checkout", function() {
     transaction(selectStore, select, select.cart);
@@ -214,17 +217,16 @@ $(document).ready(function() {
     for (var i = 0; i < cart.length; i++) {
       totalCost += cart[i].price;
     }
-    console.log(totalCost);
     customer.wallet -= totalCost;
     if (customer.wallet >= 0) {
       store.cashRegister += totalCost;
       console.log(store.cashRegister);
-      console.log("Your purchase costs $" + totalCost + ". " + "You have $" + customer.wallet + " remaining in your wallet.");
       customer.cart = [];
       $("#cart tbody").empty();
+      $(".modal-body p").append("Your purchase cost $" + totalCost + ". " + "You have $" + customer.wallet + " remaining in your wallet.");
     } else {
       customer.wallet += totalCost;
-      console.log("Purchase denied. You do not have enough money in your wallet to make this purchase.");
+      $(".modal-body p").append("Purchase denied. You do not have enough money in your wallet to make this purchase.");
     }
   }
 
@@ -255,7 +257,6 @@ $(document).ready(function() {
     };
   }
 
-  // if store is out of product or customer out of money, don't allow purchase
 
   //object constructor to create Product prototype
   function Product(name, price, material, weight) {
@@ -275,10 +276,10 @@ $(document).ready(function() {
   //
   //   this.testSuccess = function(product) {
   //     return "This " + Product.name + " works.";
-  //   }
+  //   };
   // }
   //
-  // Electronic.prototype
+  // Electronic.prototype = Product;
 
 
   //object constructor to create store prototype
