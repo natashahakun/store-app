@@ -5,7 +5,6 @@
   var select = {};
   var selectStore = {};
   var selectProduct = {};
-  var totalCost = 0;
 
 $(document).ready(function() {
 
@@ -214,6 +213,7 @@ $(document).ready(function() {
 
   //transaction calls purchase for store and customer
   function transaction(store, customer, cart) {
+    var totalCost = 0;
     for (var i = 0; i < cart.length; i++) {
       totalCost += cart[i].price;
     }
@@ -223,13 +223,14 @@ $(document).ready(function() {
       console.log(store.cashRegister);
       customer.cart = [];
       $("#cart tbody").empty();
-      $(".modal-body p").append("Your purchase cost $" + totalCost + ". " + "You have $" + customer.wallet + " remaining in your wallet.");
-    } else {
+      $(".modal-body p").html("Your purchase cost $" + totalCost + ". " + "You have $" + customer.wallet + " remaining in your wallet.");
+    } else if (customer.wallet <= 0){
       customer.wallet += totalCost;
-      $(".modal-body p").append("Purchase denied. You do not have enough money in your wallet to make this purchase.");
+      $(".modal-body p").html("Purchase denied. You do not have enough money in your wallet to make this purchase.");
+    } else {
+      $(".modal-body p").html("Please add an item to your cart.");
     }
   }
-
 
   //object constructor to create customer prototype
   function Customer(name, wallet) {
