@@ -1,16 +1,28 @@
-.products-container {
+.products-container, .cart-container {
   display:none
 }
 
-.cart-container {
-  display:none
-}
 
-.ui-widget {
+//dialog box
+
+.ui-dialog {
   width: 100%;
   background: #eee;
-}
-
-.ui-dialog-content {
-  text-align: center;
+  border: 1px solid black;
+  .ui-dialog-titlebar {
+    text-align: center;
+    margin-top: 5%;
+  }
+  .ui-dialog-buttonset {
+    text-align: center;
+    margin-bottom: 5%;
+  }
+  .ui-dialog-content {
+    text-align: center;
+    font-size: 1.25em;
+    margin-top: 6%;
+  }
+  .ui-button {
+    margin: 0 2%;
+  }
 }
